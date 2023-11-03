@@ -43,6 +43,8 @@ dependencies:
   camera: ^0.10.5+5
   image_picker: ^1.0.4
   image_picker_for_web: ^3.0.1
+  font_awesome_flutter: ^10.6.0
+  flutter_masked_text2: ^0.9.1
 
 dev_dependencies:
   flutter_test:
