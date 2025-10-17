@@ -11,53 +11,70 @@ class SetLabelButtons extends StatelessWidget {
   final VoidCallback secondaryOnPressed;
   final bool enablePrimaryColor;
   final bool enableSecondaryColor;
-  const SetLabelButtons(
-      {super.key,
-      required this.primaryLabel,
-      required this.primaryOnPressed,
-      required this.secondaryLabel,
-      required this.secondaryOnPressed,
-      this.enablePrimaryColor = false,
-      this.enableSecondaryColor = false});
+  final bool isSecondaryEnabled;
+
+  const SetLabelButtons({
+    super.key,
+    required this.primaryLabel,
+    required this.primaryOnPressed,
+    required this.secondaryLabel,
+    required this.secondaryOnPressed,
+    this.enablePrimaryColor = false,
+    this.enableSecondaryColor = false,
+    this.isSecondaryEnabled = true,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: AppColors.background,
-        height: 57,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Divider(
-              thickness: 1,
-              height: 1,
-              color: AppColors.stroke,
-            ),
-            SizedBox(
-              height: 56,
-              child: Row(
-                children: [
-                  Expanded(
-                      child: LabelButton(
+      color: AppColors.background,
+      height: 57,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Divider(
+            thickness: 1,
+            height: 1,
+            color: AppColors.stroke,
+          ),
+          SizedBox(
+            height: 56,
+            child: Row(
+              children: [
+                Expanded(
+                  child: LabelButton(
                     label: primaryLabel,
                     onPressed: primaryOnPressed,
                     style: enablePrimaryColor
                         ? TextStyles.buttonPrimary
                         : TextStyles.buttonHeading,
-                  )),
-                  const DividerVertical(),
-                  Expanded(
-                      child: LabelButton(
+                  ),
+                ),
+                const DividerVertical(),
+                Expanded(
+                  child: LabelButton(
                     label: secondaryLabel,
-                    onPressed: secondaryOnPressed,
+                    onPressed: isSecondaryEnabled ? secondaryOnPressed : () {},
                     style: enableSecondaryColor
-                        ? TextStyles.buttonPrimary
-                        : TextStyles.buttonHeading,
-                  )),
-                ],
-              ),
+                        ? TextStyles.buttonPrimary.copyWith(
+                            color: isSecondaryEnabled
+                                ? TextStyles.buttonPrimary.color
+                                : TextStyles.buttonPrimary.color!
+                                    .withOpacity(0.5),
+                          )
+                        : TextStyles.buttonHeading.copyWith(
+                            color: isSecondaryEnabled
+                                ? TextStyles.buttonHeading.color
+                                : TextStyles.buttonHeading.color!
+                                    .withOpacity(0.5),
+                          ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }

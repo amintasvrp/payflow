@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:payflow/app_widget.dart';
+import 'package:payflow/shared/auth/auth_controller.dart';
+
+final authController = AuthController();
 
 void main() {
   runApp(const AppFirebase());

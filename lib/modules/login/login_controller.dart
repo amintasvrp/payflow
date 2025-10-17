@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:payflow/shared/auth/auth_controller.dart';
 import 'package:payflow/shared/models/user_model.dart';
+import 'package:payflow/main.dart'; // importa a instância global
+
 
 class LoginController {
-  final authCtrl = AuthController();
   Future<void> googleSignIn(BuildContext context) async {
     GoogleSignIn googleSignIn = GoogleSignIn(
       scopes: ['email'],
@@ -16,10 +16,10 @@ class LoginController {
       final response = await googleSignIn.signIn();
       final user =
           UserModel(name: response!.displayName!, photoURL: response.photoUrl);
-      authCtrl.setUserAuthenticated(context, user);
+      authController.setUserAuthenticated(context, user);
       print(response);
     } catch (error) {
-      authCtrl.setUserAuthenticated(context, null);
+      authController.setUserAuthenticated(context, null);
       print(error);
     }
   }

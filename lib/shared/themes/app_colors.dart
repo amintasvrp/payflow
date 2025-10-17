@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -10,4 +12,5 @@ class AppColors {
   static const shape = Color(0xFFFAFAFC);
   static const background = Color(0xFFFFFFFF);
   static const input = Color(0xFFB1B0B8);
+  static final secondary = Color(0xFF585666);
 }
