@@ -8,7 +8,7 @@
 
 <p align="center">
   <img alt="Flutter" src="https://img.shields.io/badge/-Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" />
-  <img alt="Firebase" src="https://img.shields.io/badge/-Expo-DD2C00?style=for-the-badge&logo=firebase&logoColor=white" />
+  <img alt="Firebase" src="https://img.shields.io/badge/-Firebase-DD2C00?style=for-the-badge&logo=firebase&logoColor=white" />
 </p>
 
 PayFlow is a mobile app for organizing your bills, both pending and paid, by scanning their barcodes.
